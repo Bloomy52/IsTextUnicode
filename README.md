@@ -2,7 +2,7 @@
 Detects text encoding with the confidence of Windows and the accuracy of a coin toss.
 
 ## Why Exactly?
-Have you ever heard of `Bush hid the facts`? Well, TLDR, it was a bug found in the old Windows Notepad in Windows NT 3.5 up to Windows Vista caused by a function named `IsTextUnicode`. This is a function with multiple different parts, but the main issue was how it used statistical heuristics to determine whether a file was Unicode/UTF-16 or ASCII/ANSI by requesting `IS_TEXT_UNICODE_STATISTICS` (which still exists in Windows). This Windows Forms App replicates the original functionality of the app in Visual Basic using the .NET Framework because its better than C++ and you know it.
+Have you ever heard of `Bush hid the facts`? Well, TLDR, it was a bug found in the old Windows Notepad in Windows NT 3.5 up to Windows Vista caused by a function named `IsTextUnicode`. This is a function with multiple different parts, but the main issue was how it used statistical heuristics to determine whether a file was Unicode/UTF-16 or ASCII/ANSI by requesting `IS_TEXT_UNICODE_STATISTICS` (which still exists in Windows). This Windows Forms App replicates the original functionality of the app in Visual Basic using the .NET Framework because it's better than C++ and you know it.
 
 ## How does this work?
 Well, `IS_TEXT_UNICODE_STATISTICS` used a trick where it split hex values into a high-byte stream and a low-byte stream. It then converted the hex values into decimal and did some fancy math and ended up with two numbers that get compared to where `IS_TEXT_UNICODE_STATISTICS` returned true if the total changes of all of the low bytes was greater than the total changes of the high bytes multiplied by three. 
@@ -12,7 +12,7 @@ Well, `IS_TEXT_UNICODE_STATISTICS` used a trick where it split hex values into a
 > This software was tested using Windows 11 and is built for the .NET Framework. This software has not been tested on other devices. 
 
 ### Downloading from GitHub Releases (Recommended)
-You can download the software from the latest GitHub Release. Then you can run it by double-clicking on the `IsUnicodeText.exe` file. 
+You can download the software from the latest [GitHub Release](https://github.com/Bloomy52/IsTextUnicode/releases/latest). Then you can run it by double-clicking on the `IsUnicodeText.exe` file. 
 
 You can verify the attestation by using the GitHub CLI and entering the following command from your working directory:
 ```bash
@@ -32,7 +32,7 @@ Then, make sure you have the `.NET desktop build tools` for Visual Studio 2026. 
 ```bash
 git clone https://github.com/Bloomy52/IsTextUnicode.git
 ```
-2. Search for "Developer Command Prompt for VS" and click enter.
+2. Search for "Developer Command Prompt for VS" and press Enter.
 3. `cd` to the directory where you cloned the repo.
 4. Then run the following command:
 ```bat
@@ -42,15 +42,15 @@ msbuild IsTextUnicode/IsTextUnicode.vbproj /restore /m /p:Configuration=Release 
 ```bat
 IsTextUnicode\bin\Release\IsTextUnicode.exe 
 ```
-**Note:** You cannot run this command in the `Developer Command Prompt for VS`. You need to open up a new `Command Prompt` (`cmd.exe`) instance.
+
 
 ## What about that C file?
 If you didn't notice, there is a C file named `test_unicode.c` in the repo. You can test the actual `IsTextUnicode` function found in the Win32 API. To do this, you can do it one of two ways.
 
-### 1. Downloading from GitHub Releases
-You can download the EXE from the latest GitHub Release. To test it out, please use the following command from the directory where the file was downloaded in the Command Prompt (cmd.exe):
+### 1. Downloading the Execuatable from GitHub Releases
+You can download the EXE from the latest [GitHub Release](https://github.com/Bloomy52/IsTextUnicode/releases/latest). To test it out, please use the following command from the directory where the file was downloaded in the Command Prompt (cmd.exe):
 ```bat
-test_unicode.c "bush hid the facts"
+test_unicode.exe "bush hid the facts"
 :: you can enter any phrase you want as long as it is in quotes
 ```
 And you should get the following response:
@@ -61,7 +61,7 @@ Command-line text (18 bytes)
 ```
 You can verify the attestation by using the GitHub CLI and entering the following command from your working directory:
 ```bash
-gh attestation verify IsUnicodeText.exe --repo Bloomy52/IsUnicodeText
+gh attestation verify test_unicode.exe --repo Bloomy52/IsUnicodeText
 ```
 
 ### 2. Building from Source
@@ -71,7 +71,7 @@ You can also build from source if you so desire, but this is only recommended fo
 ```bash
 git clone https://github.com/Bloomy52/IsTextUnicode.git
 ```
-2. Search for "Developer Command Prompt for VS" and click enter.
+2. Search for "Developer Command Prompt for VS" and press Enter.
 3. `cd` to the directory where you cloned the repo.
 4. Then use the following command to compile the C file.
 ```bat
@@ -88,7 +88,6 @@ Command-line text (18 bytes)
   Statistics only: TRUE, flags = 0x0002
   All tests:       TRUE, flags = 0x0002
 ```
-**Note:** You cannot run this command in the `Developer Command Prompt for VS`. You need to open up a new `Command Prompt` (`cmd.exe`) instance.
 
 ## Contributing
 Contributions are welcome! If you find a bug, notice something inaccurate, or have a small improvement to suggest, feel free to open an issue or submit a pull request.
