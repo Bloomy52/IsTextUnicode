@@ -12,7 +12,9 @@ Well, `IS_TEXT_UNICODE_STATISTICS` used a trick where it split hex values into a
 > This software was tested using Windows 11 and is built for the .NET Framework. This software has not been tested on other devices. 
 
 ### Downloading from GitHub Releases (Recommended)
-You can download the software from the latest GitHub Release. You can verify the attestation by using the GitHub CLI and entering the following command from your working directory:
+You can download the software from the latest GitHub Release. Then you can run it by double-clicking on the `IsUnicodeText.exe` file. 
+
+You can verify the attestation by using the GitHub CLI and entering the following command from your working directory:
 ```bash
 gh attestation verify IsUnicodeText.exe --repo Bloomy52/IsUnicodeText
 ```
@@ -46,7 +48,7 @@ IsTextUnicode\bin\Release\IsTextUnicode.exe
 If you didn't notice, there is a C file named `test_unicode.c` in the repo. You can test the actual `IsTextUnicode` function found in the Win32 API. To do this, you can do it one of two ways.
 
 ### 1. Downloading from GitHub Releases
-You can download the EXE from the latest GitHub Release. To test it out, please use the following command from the directory where the file was downloaded in the Command Prompt (cmd.exe)
+You can download the EXE from the latest GitHub Release. To test it out, please use the following command from the directory where the file was downloaded in the Command Prompt (cmd.exe):
 ```bat
 test_unicode.c "bush hid the facts"
 :: you can enter any phrase you want as long as it is in quotes
@@ -56,6 +58,10 @@ And you should get the following response:
 Command-line text (18 bytes)
   Statistics only: TRUE, flags = 0x0002
   All tests:       TRUE, flags = 0x0002
+```
+You can verify the attestation by using the GitHub CLI and entering the following command from your working directory:
+```bash
+gh attestation verify IsUnicodeText.exe --repo Bloomy52/IsUnicodeText
 ```
 
 ### 2. Building from Source
