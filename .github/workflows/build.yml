@@ -32,7 +32,7 @@ jobs:
 
       - name: Build Release
         run: >
-          msbuild IsTextUnicode/IsTextUnicode.vbproj
+          msbuild IsUnicodeText/IsUnicodeText.vbproj
           /restore
           /m
           /p:Configuration=Release
@@ -60,15 +60,15 @@ jobs:
 
       - name: Verify executable exists
         run: |
-          if (!(Test-Path "IsTextUnicode/bin/Release/IsTextUnicode.exe")) {
-            throw "The build did not produce IsTextUnicode.exe."
+          if (!(Test-Path "IsUnicodeText/bin/Release/IsUnicodeText.exe")) {
+            throw "The build did not produce IsUnicodeText.exe."
           }
 
       - name: Attest executables
         uses: actions/attest@v4
         with:
           subject-path: |
-            ${{ github.workspace }}/IsTextUnicode/bin/Release/IsTextUnicode.exe
+            ${{ github.workspace }}/IsUnicodeText/bin/Release/IsUnicodeText.exe
             ${{ github.workspace }}/test_unicode.exe
 
       - name: Publish GitHub Release
@@ -78,10 +78,10 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
           gh release create "$env:RELEASE_TAG" `
-            "IsTextUnicode/bin/Release/IsTextUnicode.exe" `
+            "IsUnicodeText/bin/Release/IsUnicodeText.exe" `
             "test_unicode.exe" `
             --verify-tag `
-            --title "IsTextUnicode $env:RELEASE_TAG" `
+            --title "IsUnicodeText $env:RELEASE_TAG" `
             --generate-notes
 
           if ($LASTEXITCODE -ne 0) {
