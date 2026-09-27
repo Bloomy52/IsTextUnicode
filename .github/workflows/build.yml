@@ -1,0 +1,54 @@
+name: Build IsTextUnicode
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v3
+
+      - name: Build Release
+        run: >
+          msbuild IsTextUnicode/IsTextUnicode.vbproj
+          /restore
+          /m
+          /p:Configuration=Release
+          /p:Platform=AnyCPU
+
+      - name: Attest executable
+        if: >-
+          github.event_name != 'pull_request' &&
+          github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: actions/attest@v4
+        with:
+          subject-path: '${{ github.workspace }}/IsTextUnicode/bin/Release/IsTextUnicode.exe'
+
+      - name: Upload app
+        uses: actions/upload-artifact@v7
+        with:
+          name: IsTextUnicode-${{ github.sha }}
+          path: |
+            IsTextUnicode/bin/Release/*.exe
+            IsTextUnicode/bin/Release/*.exe.config
+            IsTextUnicode/bin/Release/*.dll
+          if-no-files-found: error
+          retention-days: 30
