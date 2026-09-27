@@ -38,16 +38,38 @@ jobs:
           /p:Configuration=Release
           /p:Platform=AnyCPU
 
+      - name: Compile C demonstration
+        shell: pwsh
+        run: |
+            $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+            $vsPath = & $vswhere -latest -products '*' `
+              -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+              -property installationPath
+
+            if (!$vsPath) {
+              throw "MSVC build tools were not found."
+            }
+
+            $devCmd = Join-Path $vsPath "Common7\Tools\VsDevCmd.bat"
+
+            cmd.exe /c "`"$devCmd`" -arch=x64 -host_arch=x64 && cl.exe /nologo /W4 /O2 /MT test_unicode.c /Fe:test_unicode.exe /link Advapi32.lib"
+
+            if ($LASTEXITCODE -ne 0) {
+              throw "The C demonstration failed to compile."
+            }
+
       - name: Verify executable exists
         run: |
           if (!(Test-Path "IsTextUnicode/bin/Release/IsTextUnicode.exe")) {
             throw "The build did not produce IsTextUnicode.exe."
           }
 
-      - name: Attest executable
+      - name: Attest executables
         uses: actions/attest@v4
         with:
-          subject-path: '${{ github.workspace }}/IsTextUnicode/bin/Release/IsTextUnicode.exe'
+          subject-path: |
+            ${{ github.workspace }}/IsTextUnicode/bin/Release/IsTextUnicode.exe
+            ${{ github.workspace }}/test_unicode.exe
 
       - name: Publish GitHub Release
         env:
@@ -57,6 +79,7 @@ jobs:
         run: |
           gh release create "$env:RELEASE_TAG" `
             "IsTextUnicode/bin/Release/IsTextUnicode.exe" `
+            "test_unicode.exe" `
             --verify-tag `
             --title "IsTextUnicode $env:RELEASE_TAG" `
             --generate-notes
