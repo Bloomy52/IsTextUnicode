@@ -1,4 +1,4 @@
-# IsTextUnicode
+# IsTextUnicode?
 Detects text encoding with the confidence of Windows and the accuracy of a coin toss.
 
 ## Why Exactly?
@@ -40,4 +40,3 @@ msbuild IsTextUnicode/IsTextUnicode.vbproj /restore /m /p:Configuration=Release 
 ```bat
 .\IsTextUnicode\bin\Release\IsTextUnicode.exe 
 ```
-
