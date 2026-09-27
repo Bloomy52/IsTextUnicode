@@ -2,10 +2,19 @@
 Detects text encoding with the confidence of Windows and the accuracy of a coin toss.
 
 ## Why Exactly?
-Have you ever heard of `Bush hid the facts`? Well, TLDR, it was a bug found in the old Windows Notepad in Windows NT 3.5 up to Windows Vista caused by a function named `IsTextUnicode`. This is a function with multiple different parts, but the main issue was how it used statistical heuristics to determine whether a file was Unicode/UTF-16 or ASCII/ANSI by requesting `IS_TEXT_UNICODE_STATISTICS` (which still exists in Windows). This Windows Forms App replicates the original functionality of the app in Visual Basic using the .NET Framework because it's better than C++ and you know it.
+Have you ever heard of `Bush hid the facts`? Well, TLDR, it was a bug found in the old Windows Notepad in Windows NT 3.5 up to Windows Vista caused by a function named `IsTextUnicode`. This is a function with multiple different parts, but the main issue was how it used statistical heuristics to determine whether a file was Unicode/UTF-16 or ASCII/ANSI by requesting `IS_TEXT_UNICODE_STATISTICS` (which still exists in Windows). This Windows Forms App replicates the original functionality of the `IS_TEXT_UNICODE_STATISTICS` functionality in Visual Basic using the .NET Framework because it's better than C++ and you know it.
 
 ## How does this work?
 Well, `IS_TEXT_UNICODE_STATISTICS` used a trick where it split hex values into a high-byte stream and a low-byte stream. It then converted the hex values into decimal and did some fancy math and ended up with two numbers that get compared to where `IS_TEXT_UNICODE_STATISTICS` returned true if the total changes of all of the low bytes was greater than the total changes of the high bytes multiplied by three. 
+
+This faithful recreation takes an ASCII input, converts it to bytes, and then implements the separation of the bytes into high-byte streams and low-byte streams. The function converts the bytes from Hexidecimal to Decimal values and finds the absolute value of the changes from the previous byte and the current byte, sums them together and then decides whether the text is `Unicode` or `ANSI` based on whether the total changes of the low bytes is greater than the total changes of the high bytes times three. For those who like to visualize it in math notation, here it is below.
+
+1. Find the absolute value of the changes: $|\text{bytes}_{\text{previous}} - \text{bytes}_{\text{current}}| = \Delta_{i}$
+2. Sum the total changes for the byte stream: $\Delta_1 + \Delta_2 + ... + \Delta_n$
+3. Compare the summed changes for each stream and decide whether the text is `Unicode` or `ANSI`:\
+Unicode Encoded if: $\sum_{i=1}^n \Delta_{i_{\text{ low-bytes}}} \gt \left(\sum_{i=1}^n \Delta_{i_{\text{ high-bytes}}} \right) * 3$\
+ANSI Encoded if: &emsp; $\sum_{i=1}^n \Delta_{i_{\text{ low-bytes}}} \lt \left(\sum_{i=1}^n \Delta_{i_{\text{ high-bytes}}} \right) * 3$
+
 
 ## Using the Software
 > [!NOTE]
