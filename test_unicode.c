@@ -1,3 +1,9 @@
+/*
+ * IsTextUnicode
+ * Copyright (c) 2026 Louie Bloomberg
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>

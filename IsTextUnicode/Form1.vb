@@ -1,4 +1,8 @@
-﻿Imports System.Text
+﻿' IsTextUnicode
+' Copyright (c) 2026 Louie Bloomberg
+' SPDX-License-Identifier: MIT
+
+Imports System.Text
 Public Class Form1
     Private Sub btnCheckEncoding_Click(sender As Object, e As EventArgs) Handles btnCheckEncoding.Click
         Dim inputText As String = txtInput.Text
