@@ -1,7 +1,6 @@
 ﻿Imports System.Text
 Public Class Form1
     Private Sub btnCheckEncoding_Click(sender As Object, e As EventArgs) Handles btnCheckEncoding.Click
-        txtEncodingScheme.Text() = ""
         Dim inputText As String = txtInput.Text
 
         For i As Integer = 0 To inputText.Length - 1
@@ -47,5 +46,8 @@ Public Class Form1
 
     End Sub
 
-
+    Private Sub txtInput_TextChanged(sender As Object, e As EventArgs) Handles txtInput.TextChanged
+        ' clear the encoding scheme text box when the input text changes
+        txtEncodingScheme.Clear()
+    End Sub
 End Class
