@@ -24,22 +24,14 @@ static void test(const char *name, const void *data, int size)
 
 int main(int argc, char **argv)
 {
-    if (argc > 1)
+    if (argc != 2)
     {
-        test("Command-line text", argv[1], (int)strlen(argv[1]));
-        return 0;
+        printf("Usage: test_unicode.exe \"text to test\"\n");
+        printf("Example: test_unicode.exe \"Bush hid the facts\"\n");
+        printf("\nEnclose text in quotes and use ASCII characters.\n");
+        return 1;
     }
 
-    const char ascii[] = "Hello, world!";
-    const char troublesome[] = "bush hid the facts";
-    const WCHAR utf16[] = L"Hello, world!";
-
-    /* Exclude terminating NULs from every test. */
-    test("ASCII", ascii, (int)(sizeof(ascii) - sizeof(ascii[0])));
-    test("Historical example", troublesome,
-         (int)(sizeof(troublesome) - sizeof(troublesome[0])));
-    test("UTF-16 LE", utf16,
-         (int)(sizeof(utf16) - sizeof(utf16[0])));
-
+    test("Command-line text", argv[1], (int)strlen(argv[1]));
     return 0;
 }    
