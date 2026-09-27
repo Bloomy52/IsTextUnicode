@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Endoding, Probably")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("HP Inc.")>
-<Assembly: AssemblyProduct("Endoding, Probably")>
-<Assembly: AssemblyCopyright("Copyright © HP Inc. 2026")>
+<Assembly: AssemblyTitle("IsTextUnicode")>
+<Assembly: AssemblyDescription("A demonstration of Windows' questionable Unicode detection.")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("IsTextUnicode")>
+<Assembly: AssemblyCopyright("Copyright © Louie Bloomberg 2026")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -29,4 +29,4 @@ Imports System.Runtime.InteropServices
 '
 
 <Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.2.0.0")>
