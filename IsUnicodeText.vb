@@ -1,4 +1,4 @@
-﻿' IsTextUnicode
+﻿' IsUnicodeText
 ' Copyright (c) 2026 Louie Bloomberg
 ' SPDX-License-Identifier: MIT
 
