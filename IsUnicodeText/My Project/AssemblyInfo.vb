@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("IsTextUnicode")>
+<Assembly: AssemblyTitle("IsUnicodeText")>
 <Assembly: AssemblyDescription("A demonstration of Windows' questionable Unicode detection.")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("IsTextUnicode")>
+<Assembly: AssemblyProduct("IsUnicodeText")>
 <Assembly: AssemblyCopyright("Copyright © Louie Bloomberg 2026")>
 <Assembly: AssemblyTrademark("")>
 

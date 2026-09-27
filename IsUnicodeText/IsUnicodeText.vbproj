@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DD58B46D-EF0C-484B-90ED-83AA533715AA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>IsTextUnicode.My.MyApplication</StartupObject>
-    <RootNamespace>IsTextUnicode</RootNamespace>
-    <AssemblyName>IsTextUnicode</AssemblyName>
+    <StartupObject>IsUnicodeText.My.MyApplication</StartupObject>
+    <RootNamespace>IsUnicodeText</RootNamespace>
+    <AssemblyName>IsUnicodeText</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>IsTextUnicode.xml</DocumentationFile>
+    <DocumentationFile>IsUnicodeText.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -32,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>IsTextUnicode.xml</DocumentationFile>
+    <DocumentationFile>IsUnicodeText.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>

@@ -65,7 +65,7 @@ Partial Class Form1
         Me.btnCheckEncoding.Name = "btnCheckEncoding"
         Me.btnCheckEncoding.Size = New System.Drawing.Size(549, 67)
         Me.btnCheckEncoding.TabIndex = 3
-        Me.btnCheckEncoding.Text = "IsTextUnicode?"
+        Me.btnCheckEncoding.Text = "IsUnicodeText?"
         Me.btnCheckEncoding.UseVisualStyleBackColor = True
         '
         'txtEncodingScheme
@@ -89,7 +89,7 @@ Partial Class Form1
         Me.Controls.Add(Me.lblEnterTExt)
         Me.Controls.Add(Me.txtInput)
         Me.Name = "Form1"
-        Me.Text = "IsTextUnicode?"
+        Me.Text = "IsUnicodeText?"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

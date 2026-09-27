@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.IsTextUnicode.My.MySettings
+        Friend ReadOnly Property Settings() As Global.IsUnicodeText.My.MySettings
             Get
-                Return Global.IsTextUnicode.My.MySettings.Default
+                Return Global.IsUnicodeText.My.MySettings.Default
             End Get
         End Property
     End Module
