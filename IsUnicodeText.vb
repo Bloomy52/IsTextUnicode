@@ -27,8 +27,9 @@ Public Class Form1
         Dim lowByteChanges As Integer = 0
         Dim highByteChanges As Integer = 0
 
-        ' Examine at most 256 complete 16-bit units.
-        Dim pairCount As Integer = Math.Min(buffer.Length \ 2, 256)
+
+        ' Examine at most 128 complete 16-bit units.
+        Dim pairCount As Integer = Math.Min(buffer.Length \ 2, 128)
 
         For pairIndex As Integer = 0 To pairCount - 1
             Dim i As Integer = pairIndex * 2
