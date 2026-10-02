@@ -30,14 +30,20 @@ static void test(const char *name, const void *data, int size)
 
 int main(int argc, char **argv)
 {
-    if (argc != 2)
-    {
-        printf("Usage: test_unicode.exe \"text to test\"\n");
-        printf("Example: test_unicode.exe \"Bush hid the facts\"\n");
-        printf("\nEnclose text in quotes and use ASCII characters.\n");
-        return 1;
-    }
+    #ifdef _WIN32
 
-    test("Command-line text", argv[1], (int)strlen(argv[1]));
-    return 0;
-}    
+        if (argc != 2)
+        {
+            printf("Usage: test_unicode.exe \"text to test\"\n");
+            printf("Example: test_unicode.exe \"Bush hid the facts\"\n");
+            printf("\nEnclose text in quotes and use ASCII characters.\n");
+            return 1;
+        }
+
+        test("Command-line text", argv[1], (int)strlen(argv[1]));
+        return 0;
+    #else
+        printf("This program is only supported on Windows.\n");
+        return 1;
+    #endif
+}   
