@@ -9,7 +9,7 @@ Well, `IS_TEXT_UNICODE_STATISTICS` used a trick where it split hex values into a
 
 This faithful recreation takes an ASCII input, converts it to bytes, and then implements the separation of the bytes into high-byte streams and low-byte streams. The function finds the absolute value of the changes from the previous byte and the current byte, sums them together and then decides whether the text is `Unicode` or `ANSI` based on whether the total changes of the low bytes is greater than the total changes of the high bytes times three. For those who like to visualize it in math notation, here it is below.
 
-1. Find the absolute value of the changes: $|\text{bytes}_{\text{previous}} - \text{bytes}_{\text{current}}| = \Delta_{i}$
+1. Find the absolute value of the changes: $|\text{bytes}_{\text{previous}} - \text{bytes}_{\text{current}}| = \Delta_i$
 2. Sum the total changes for the byte stream: $\Delta_1 + \Delta_2 + ... + \Delta_n$
 3. Compare the summed changes for each stream and decide whether the text is `Unicode` or `ANSI`:\
 Unicode Encoded if: $\sum_{i=1}^n \Delta_{i_{\text{ low-bytes}}} \gt \left(\sum_{i=1}^n \Delta_{i_{\text{ high-bytes}}} \right) * 3$\
