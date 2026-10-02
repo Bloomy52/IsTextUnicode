@@ -47,7 +47,7 @@ git clone https://github.com/Bloomy52/IsUnicodeText.git
 ```bat
 msbuild IsUnicodeText/IsUnicodeText.vbproj /restore /m /p:Configuration=Release /p:Platform=AnyCPU
 ```
-5. Then you can navigate to the `\bin\Release` directory and double click on the app there via File Explorer or you can invoke it in the terminal like so:
+5. Then you can navigate to the `\bin\Release` directory and double click on the app there via File Explorer or you can invoke it in the Command Prompt like so:
 ```bat
 IsUnicodeText\bin\Release\IsUnicodeText.exe 
 ```
@@ -57,7 +57,7 @@ IsUnicodeText\bin\Release\IsUnicodeText.exe
 If you didn't notice, there is a C file named `test_unicode.c` in the repo. You can test the actual `IsTextUnicode` function found in the Win32 API. To do this, you can do it one of two ways.
 
 ### 1. Downloading the Executable from GitHub Releases
-You can download the EXE from the latest [GitHub Release](https://github.com/Bloomy52/IsUnicodeText/releases/latest). To test it out, please use the following command from the directory where the file was downloaded in the Command Prompt (cmd.exe):
+You can download the EXE from the latest [GitHub Release](https://github.com/Bloomy52/IsUnicodeText/releases/latest). To test it out, please use the following command from the directory where the file was downloaded in the Command Prompt:
 ```bat
 test_unicode.exe "bush hid the facts"
 :: you can enter any phrase you want as long as it is in quotes
@@ -86,7 +86,7 @@ git clone https://github.com/Bloomy52/IsUnicodeText.git
 ```bat
 cl /W4 test_unicode.c /link Advapi32.lib
 ```
-5. Then you can invoke it in the terminal like so:
+5. Then you can invoke it in the Command Prompt like so:
 ```bat
 test_unicode.exe "bush hid the facts"
 :: you can enter any phrase you want as long as it is in quotes
